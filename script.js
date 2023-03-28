@@ -5,7 +5,7 @@ let gameData = {
   shipLength: 3,
   shipsSunk: 0,
 
-  ships: [
+  ships: [ // array thats storing the ship locations and if the player has hit those ship locations
     { locations: [0, 0, 0], hits: ["", "", ""] },
     { locations: [0, 0, 0], hits: ["", "", ""] },
     { locations: [0, 0, 0], hits: ["", "", ""] },
