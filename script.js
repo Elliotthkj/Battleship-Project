@@ -5,12 +5,47 @@ let gameData = {
   shipLength: 3,
   shipsSunk: 0,
 
+  // array thats storing the ship locations and if the player has hit those ship locations
   ships: [
-    // array thats storing the ship locations and if the player has hit those ship locations
-    { locations: [0, 0, 0], hits: ["", "", ""] },
-    { locations: [0, 0, 0], hits: ["", "", ""] },
-    { locations: [0, 0, 0], hits: ["", "", ""] },
+    { locations: [0, 0, 0], hits: ["", "", ""] }, // 0
+    { locations: [0, 0, 0], hits: ["", "", ""] }, // 1
+    { locations: [0, 0, 0], hits: ["", "", ""] }, // 2
   ],
+
+  // function that passes users guess and checks for hit/miss/sunk
+  fire: function (guess) {
+    for (let i = 0; i < this.numShips; i++) {
+      // numShips is 3 as of now
+      // 'this' refers to gameData here
+      let ship = this.ships[i]; // aka gameData.ships[0,1,2]
+      let index = ship.locations.indexOf(guess); // assigns users guess to index if its found
+
+      if (ship.hits[index] === "hit") {
+        // checks matching index in hits array for "hit"
+        resultsDisplay.displayMessage(
+          "Oops, you already hit that location silly goose!"
+        );
+        return true;
+      } else if (index >= 0) {
+        // if -1 its a miss and we exit here
+        ship.hits[index] = "hit"; // sets index to "hit" since we hit
+        resultsDisplay.displayHit(guess);
+        resultsDisplay.displayMessage("HIT!");
+
+        if (this.isSunk(ship)) {
+          resultsDisplay.displayMessage("You sank my battleship silly goose!");
+          this.shipsSunk++; // updates win condition
+        }
+        return true;
+      }
+    }
+    // if all tests fail user has missed
+    resultsDisplay.displayMiss(guess);
+    resultsDisplay.displayMessage("You missed, you silly goose.");
+    return false;
+  },
+
+  // TODO: FUNCTION 'isSunk' TO CHECK IF SHIP HAS BEEN SUNK
 };
 
 // display results of guess to the player (msg and miss/hit)
