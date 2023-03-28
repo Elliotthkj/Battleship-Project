@@ -23,11 +23,13 @@ div#messageArea {
 }
 
 .hit {
-  /* background: url("IMG FOR HIT HERE") no-repeat center center; */
+  background: url("./img/battleship.png") no-repeat center center;
+  background-size: cover;
 }
 
 .miss {
-  /* background: url("IMG FOR MISS HERE") no-repeat center center; */
+  background: url("./img/miss.png") no-repeat center center;
+  background-size: cover;
 }
 
 table {
@@ -46,7 +48,7 @@ td {
 form {
   position: absolute;
   bottom: -50px;
-  right: 36%;
+  right: 32%;
   padding: 15px;
   background-color: rgb(83, 175, 19);
 }
@@ -56,3 +58,9 @@ form input {
   border-color: rgb(83, 175, 19);
   font-size: 1em;
 }
+
+th {
+  font-size: 3rem;
+  color: green;
+}
+
