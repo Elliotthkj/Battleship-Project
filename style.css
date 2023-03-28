@@ -15,11 +15,19 @@ div#board {
 }
 
 div#messageArea {
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	color: rgb(83, 175, 19);
-	font-size: 2.5em;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  color: rgb(83, 175, 19);
+  font-size: 2.5em;
+}
+
+.hit {
+  /* background: url("IMG FOR HIT HERE") no-repeat center center; */
+}
+
+.miss {
+  /* background: url("IMG FOR MISS HERE") no-repeat center center; */
 }
 
 table {
@@ -36,16 +44,15 @@ td {
 }
 
 form {
-	position: absolute;
-	bottom: -50px;
-	right: 36%;
-	padding: 15px;
-	background-color: rgb(83, 175, 19);
+  position: absolute;
+  bottom: -50px;
+  right: 36%;
+  padding: 15px;
+  background-color: rgb(83, 175, 19);
 }
 
 form input {
-	background-color: rgb(152, 207, 113);
-	border-color: rgb(83, 175, 19);
-	font-size: 1em;
+  background-color: rgb(152, 207, 113);
+  border-color: rgb(83, 175, 19);
+  font-size: 1em;
 }
-
