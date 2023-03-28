@@ -13,8 +13,10 @@
   <body>
     <!-- game board goes here... use table? -->
     <div id="board">
+
       <!-- something to display messages/results to player -->
-      <div id="messageArea"></div>
+      <div id="messageArea">Hello gamer!</div>
+
       <table>
         <tr>
           <td id="00"></td>
@@ -82,6 +84,10 @@
       </table>
 
       <!-- form to submit guesses near bottom -->
+      <form>
+        <input type="text" id="guessInput" placeholder="A0" />
+        <input type="button" id="fireButton" value="Fire!" />
+      </form>
     </div>
   </body>
 </html>

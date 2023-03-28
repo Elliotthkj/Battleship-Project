@@ -14,6 +14,14 @@ div#board {
   margin: auto;
 }
 
+div#messageArea {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	color: rgb(83, 175, 19);
+	font-size: 2.5em;
+}
+
 table {
   border-spacing: 0px;
   position: absolute;
@@ -26,3 +34,18 @@ td {
   height: 94px;
   border: 2px solid green;
 }
+
+form {
+	position: absolute;
+	bottom: -50px;
+	right: 36%;
+	padding: 15px;
+	background-color: rgb(83, 175, 19);
+}
+
+form input {
+	background-color: rgb(152, 207, 113);
+	border-color: rgb(83, 175, 19);
+	font-size: 1em;
+}
+
