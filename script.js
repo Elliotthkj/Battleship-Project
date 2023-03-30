@@ -110,18 +110,20 @@ let winCondition = {
 function parseGuess(guess) {
   let alphabet = ["A", "B", "C", "D", "E", "F", "G"]; // the only letters we will accept in the guess
 
-  if (guess === null || guess.length !== 2) { // guess must be 2 characters
+  if (guess === null || guess.length !== 2) {
+    // guess must be 2 characters
     alert(
       "Oops, please enter a valid letter and number combination you silly goose."
     );
   } else {
-    let firstChar = guess.charAt(0); // stores letter portion of guess
-    let row = alphabet.indexOf(firstChar); // converts letter guess A-G into a digit 0-6
+    let row = alphabet.indexOf(guess.charAt(0)); // converts letter portion of guess into a digit  (A-G to 0-6)
     let column = guess.charAt(1);
 
-    if (isNaN(row) || isNaN(column)) { // both characters must be numbers at this point
+    if (isNaN(row) || isNaN(column)) {
+      // both characters must be numbers at this point
       alert("Oops, that isn't on the board silly goose.");
-    } else if ( // making sure numbers are valid guesses on the board space
+    } else if (
+      // making sure numbers are valid guesses on the board space
       row < 0 ||
       row >= gameData.boardSize ||
       column < 0 ||
@@ -129,7 +131,7 @@ function parseGuess(guess) {
     ) {
       alert("Oops, that's off the board silly goose!");
     } else {
-      return row + column; // returns a string of two numbers representing the user's guess 
+      return row + column; // returns a string of two numbers representing the user's guess
     }
   }
   return null; // guess is invalid and returns null
