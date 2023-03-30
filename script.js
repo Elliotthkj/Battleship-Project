@@ -18,7 +18,7 @@ let gameData = {
       // numShips is 3 as of now
       // 'this' refers to gameData here
       let ship = this.ships[i]; // aka gameData.ships[0,1,2]
-      let index = ship.locations.indexOf(guess); // assigns users guess to index if its found
+      let index = ship.locations.indexOf(guess); // assigns users guess to index if its found, -1 if not found
 
       if (ship.hits[index] === "hit") {
         // checks matching index in hits array for "hit"
@@ -28,13 +28,13 @@ let gameData = {
         return true;
       } else if (index >= 0) {
         // if -1 its a miss and we exit here
-        ship.hits[index] = "hit"; // sets index to "hit" since we hit
+        ship.hits[index] = "hit"; // sets index location to "hit" since we hit
         resultsDisplay.displayHit(guess);
         resultsDisplay.displayMessage("HIT!");
 
         if (this.isSunk(ship)) {
           resultsDisplay.displayMessage("You sank my battleship silly goose!");
-          this.shipsSunk++; // updates win condition
+          this.shipsSunk++; // updates win condition, 3 to win
         }
         return true;
       }
@@ -45,7 +45,15 @@ let gameData = {
     return false;
   },
 
-  // TODO: FUNCTION 'isSunk' TO CHECK IF SHIP HAS BEEN SUNK
+  // runs through the ship's array when called after a hit is made and checks if all indexes are marked "hit"
+  isSunk: function (ship) {
+    for (let i = 0; i < this.shipLength; i++) {
+      if (ship.hits[i] !== "hit") {
+        return false; // false ship is NOT sunk yet
+      }
+    }
+    return true; // true if all indexes are marked "hit"
+  },
 };
 
 // display results of guess to the player (msg and miss/hit)
