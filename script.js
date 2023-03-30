@@ -56,40 +56,55 @@ let gameData = {
   },
 
   // TODO: generate ship locations
-  
 };
 
 // display results of guess to the player (msg and miss/hit)
 let resultsDisplay = {
-  // will display msg based on the msg passed to the function based on the users guess results
+  // displays msg based on the msg passed to the function based on the users guess results
   displayMessage: function (msg) {
     let messageArea = document.getElementById("messageArea");
     messageArea.innerHTML = msg;
   },
 
-  // will take users guess and update the cell that was guessed with 'hit' img
+  // takes users guess and update the cell that was guessed with 'hit' img
   displayHit: function (location) {
     let cell = document.getElementById(location);
     cell.setAttribute("class", "hit");
   },
 
-  // will take users guess and update the cell that was guessed with 'miss' img
+  // takes users guess and update the cell that was guessed with 'miss' img
   displayMiss: function (location) {
     let cell = document.getElementById(location);
     cell.setAttribute("class", "miss");
   },
 };
 
-// TODO: track amount of guesses and win condition
+// track amount of guesses and win condition
 let winCondition = {
   guesses: 0,
 
+  // processes the guess entered in the form
   processGuess: function (guess) {
-    // TODO: will process the guess enter in the form
+    let location = parseGuess(guess);
+    let accuracy = Math.round((gameData.numShips * 3 / this.guesses) * 100 - 1);
+    if (location) {
+      this.guesses++;
+      let hit = gameData.fire(location);
+      if (hit && gameData.shipsSunk === gameData.numShips) {
+        resultsDisplay.displayMessage(
+          "You sank all my battleships, in " +
+            this.guesses +
+            " guesses with " +
+            accuracy +
+            "% accuracy! Good job silly goose :)"
+        );
+      }
+    }
   },
 };
 
 // TODO: function to parse a guess from the user
+
 
 // TODO: event handlers
 // TODO: handle fire button
