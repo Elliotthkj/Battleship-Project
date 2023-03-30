@@ -45,7 +45,7 @@ let gameData = {
     return false;
   },
 
-  // runs through the ship's array when called after a hit is made and checks if all indexes are marked "hit"
+  // runs through the ship's array when called in fire(guess) after a hit is made and checks if all indexes are marked "hit"
   isSunk: function (ship) {
     for (let i = 0; i < this.shipLength; i++) {
       if (ship.hits[i] !== "hit") {
@@ -54,6 +54,9 @@ let gameData = {
     }
     return true; // true if all indexes are marked "hit"
   },
+
+  // TODO: generate ship locations
+  
 };
 
 // display results of guess to the player (msg and miss/hit)
@@ -77,12 +80,19 @@ let resultsDisplay = {
   },
 };
 
-//track amount of guesses and win condition
+// TODO: track amount of guesses and win condition
+let winCondition = {
+  guesses: 0,
 
-// function to parse a guess from the user
+  processGuess: function (guess) {
+    // TODO: will process the guess enter in the form
+  },
+};
 
-// event handlers
-// handle fire button
-// handle key press
+// TODO: function to parse a guess from the user
 
-// initialize the game/assign event handlers and generate ship locations
+// TODO: event handlers
+// TODO: handle fire button
+// TODO: handle key press
+
+// TODO: initialize the game/assign event handlers and generate ship locations
