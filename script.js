@@ -86,11 +86,14 @@ let winCondition = {
   // processes the guess entered in the form
   processGuess: function (guess) {
     let location = parseGuess(guess);
-    let accuracy = Math.round((gameData.numShips * 3 / this.guesses) * 100 - 1);
+    let accuracy = Math.round(
+      ((gameData.numShips * 3) / this.guesses) * 100 - 1
+    );
     if (location) {
       this.guesses++;
       let hit = gameData.fire(location);
       if (hit && gameData.shipsSunk === gameData.numShips) {
+        // displays winning message if all ships are sunk
         resultsDisplay.displayMessage(
           "You sank all my battleships, in " +
             this.guesses +
@@ -103,8 +106,34 @@ let winCondition = {
   },
 };
 
-// TODO: function to parse a guess from the user
+// function to parse a guess from the user and check if its a valid guess
+function parseGuess(guess) {
+  let alphabet = ["A", "B", "C", "D", "E", "F", "G"]; // the only letters we will accept in the guess
 
+  if (guess === null || guess.length !== 2) { // guess must be 2 characters
+    alert(
+      "Oops, please enter a valid letter and number combination you silly goose."
+    );
+  } else {
+    let firstChar = guess.charAt(0); // stores letter portion of guess
+    let row = alphabet.indexOf(firstChar); // converts letter guess A-G into a digit 0-6
+    let column = guess.charAt(1);
+
+    if (isNaN(row) || isNaN(column)) { // both characters must be numbers at this point
+      alert("Oops, that isn't on the board silly goose.");
+    } else if ( // making sure numbers are valid guesses on the board space
+      row < 0 ||
+      row >= gameData.boardSize ||
+      column < 0 ||
+      column >= gameData.boardSize
+    ) {
+      alert("Oops, that's off the board silly goose!");
+    } else {
+      return row + column; // returns a string of two numbers representing the user's guess 
+    }
+  }
+  return null; // guess is invalid and returns null
+}
 
 // TODO: event handlers
 // TODO: handle fire button
