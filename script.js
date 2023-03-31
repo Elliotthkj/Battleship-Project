@@ -91,7 +91,7 @@ let winCondition = {
     );
     if (location) {
       this.guesses++;
-      let hit = gameData.fire(location);
+      let hit = gameData.fire(location); // runs guess through 'fire: function (guess)'
       if (hit && gameData.shipsSunk === gameData.numShips) {
         // displays winning message if all ships are sunk
         resultsDisplay.displayMessage(
@@ -137,8 +137,22 @@ function parseGuess(guess) {
   return null; // guess is invalid and returns null
 }
 
-// TODO: event handlers
-// TODO: handle fire button
+// event handlers
+// handle fire button
+function handleFireButton() {
+  let guessInput = document.getElementById("guessInput"); // access DOM to retrieve guess input
+  let guess = guessInput.value.toUpperCase(); // converts letter to uppercase and stores the guess
+
+  winCondition.processGuess(guess); // runs through processGuess, parseGuess, and fire functions.. updates DOM... then checks win condition
+
+  guessInput.value = ""; // removes old guess from form for convenience
+}
+
 // TODO: handle key press
 
 // TODO: initialize the game/assign event handlers and generate ship locations
+window.onload = function () {
+  // Fire! button onclick handler
+  const fireButton = document.getElementById("fireButton");
+  fireButton.onclick = handleFireButton;
+};
