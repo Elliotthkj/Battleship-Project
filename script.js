@@ -148,11 +148,25 @@ function handleFireButton() {
   guessInput.value = ""; // removes old guess from form for convenience
 }
 
-// TODO: handle key press
+// handle key press 
+function handleKeyPress(e) {
+  let fireButton = document.getElementById("fireButton");
+
+  if (e.keyCode === 13) {
+    fireButton.click(); // tells to browser to click fireButton for us if ENTER key (aka keyCode 13) is pressed
+    return false;
+  }
+}
 
 // TODO: initialize the game/assign event handlers and generate ship locations
 window.onload = function () {
   // Fire! button onclick handler
   const fireButton = document.getElementById("fireButton");
   fireButton.onclick = handleFireButton;
+
+  // handle "return" key press from guess input field
+  const guessInput = document.getElementById("guessInput");
+  guessInput.onkeydown = handleKeyPress;
+
+  // TODO: generate ship locations
 };
