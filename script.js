@@ -56,6 +56,17 @@ let gameData = {
   },
 
   // TODO: generate ship locations
+  generateShipLocations: function () {
+    let locations; // empty array to hold current iterated ship location
+    for (let i = 0; i < this.numShips; i++) { // generate ships = numShips
+      do {
+        locations = this.generateShip(); // TODO: function to create an array of the current iterated ship
+      } while (this.collision(locations)); // TODO: function to check if it is overlapping with a previously created ship
+      this.ships[i].locations = locations; // once array is created and is verified to not be overlapping with another ship we save the location in gameData.ships and do it again until it creates ships = numShips
+    }
+    console.log("Ships array: ");
+    console.log(this.ships);
+  },
 };
 
 // display results of guess to the player (msg and miss/hit)
@@ -79,7 +90,7 @@ let resultsDisplay = {
   },
 };
 
-// track amount of guesses and win condition
+// track amount of guesses, fires off the users guess, and checks win condition
 let winCondition = {
   guesses: 0,
 
@@ -148,7 +159,7 @@ function handleFireButton() {
   guessInput.value = ""; // removes old guess from form for convenience
 }
 
-// handle key press 
+// handle key press
 function handleKeyPress(e) {
   let fireButton = document.getElementById("fireButton");
 
