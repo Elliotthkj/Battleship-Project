@@ -14,16 +14,17 @@ let gameData = {
 
   // function that passes users guess and checks for hit/miss/sunk
   fire: function (guess) {
+    const td = document.getElementById(guess);
     for (let i = 0; i < this.numShips; i++) {
       // numShips is 3 as of now
       // 'this' refers to gameData here
       let ship = this.ships[i]; // aka gameData.ships[0,1,2]
       let index = ship.locations.indexOf(guess); // assigns users guess to index if its found, -1 if not found
 
-      if (ship.hits[index] === "hit") {
+      if (ship.hits[index] === "hit" || td.classList.contains("miss")) {
         // checks matching index in hits array for "hit"
         resultsDisplay.displayMessage(
-          "Oops, you already hit that location silly goose!"
+          "Oops, you already guessed that location silly goose!"
         );
         return true;
       } else if (index >= 0) {
@@ -136,11 +137,16 @@ let winCondition = {
 
   // processes the guess entered in the form
   processGuess: function (guess) {
-    // let location = parseGuess(guess); DISCONTINUED
+    // let location = parseFormGuess(guess); DISCONTINUED
+    let td = document.getElementById(guess);
     let accuracy = Math.round(
       ((gameData.numShips * gameData.shipLength) / this.guesses) * 100 - 1
     );
-    if (guess) {
+    if (
+      guess &&
+      !td.classList.contains("miss") &&
+      !td.classList.contains("hit")
+    ) {
       this.guesses++;
       let hit = gameData.fire(guess); // runs guess through 'fire: function (guess)'
       if (hit && gameData.shipsSunk === gameData.numShips) {
@@ -158,7 +164,7 @@ let winCondition = {
 };
 
 // function to parse a guess from the user and check if the typed entry is a valid guess DISCONTINUED
-function parseGuess(guess) {
+function parseFormGuess(guess) {
   let alphabet = ["A", "B", "C", "D", "E", "F", "G"]; // the only letters we will accept in the guess
 
   if (guess === null || guess.length !== 2) {
@@ -199,7 +205,7 @@ function resetGame() {
     { locations: [0, 0, 0], hits: ["", "", ""] },
     { locations: [0, 0, 0], hits: ["", "", ""] },
   ];
-  messageArea.innerHTML = 'Lets go again. Hit all the ships to win!';
+  messageArea.innerHTML = "Lets go again. Hit all the ships to win!";
   gameData.generateShipLocations();
 }
 
@@ -209,7 +215,7 @@ function handleFireButton() {
   let guessInput = document.getElementById("guessInput"); // access DOM to retrieve guess input
   let guess = guessInput.value.toUpperCase(); // converts letter to uppercase and stores the guess
 
-  winCondition.processGuess(guess); // runs through processGuess, parseGuess, and fire functions.. updates DOM... then checks win condition
+  winCondition.processGuess(guess); // runs through processGuess, parseFormGuess, and fire functions.. updates DOM... then checks win condition
 
   guessInput.value = ""; // removes old guess from form for convenience
 }

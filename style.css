@@ -17,8 +17,7 @@ div#board {
 div#messageArea {
   position: absolute;
   top: 0px;
-  left: 20%;
-  max-width: 624px;
+  left: 0px;
   color: rgb(83, 175, 19);
   font-size: 2.5em;
 }
