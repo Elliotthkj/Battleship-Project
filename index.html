@@ -14,78 +14,78 @@
     <!-- game board goes here... use table? -->
     <div id="board">
       <!-- something to display messages/results to player -->
-      <div id="messageArea">Hello gamer!</div>
+      <div id="messageArea">Hello gamer! Welcome to Battleship. Hit all the ships to win!</div>
 
       <table>
         <tr>
           <th>A</th>
-          <td id="00"></td>
-          <td id="01"></td>
-          <td id="02"></td>
-          <td id="03"></td>
-          <td id="04"></td>
-          <td id="05"></td>
-          <td id="06"></td>
+          <td id="00" data-row="0" data-column="0"></td>
+          <td id="01" data-row="0" data-column="1"></td>
+          <td id="02" data-row="0" data-column="2"></td>
+          <td id="03" data-row="0" data-column="3"></td>
+          <td id="04" data-row="0" data-column="4"></td>
+          <td id="05" data-row="0" data-column="5"></td>
+          <td id="06" data-row="0" data-column="6"></td>
         </tr>
         <tr>
           <th>B</th>
-          <td id="10"></td>
-          <td id="11"></td>
-          <td id="12"></td>
-          <td id="13"></td>
-          <td id="14"></td>
-          <td id="15"></td>
-          <td id="16"></td>
+          <td id="10" data-row="1" data-column="0"></td>
+          <td id="11" data-row="1" data-column="1"></td>
+          <td id="12" data-row="1" data-column="2"></td>
+          <td id="13" data-row="1" data-column="3"></td>
+          <td id="14" data-row="1" data-column="4"></td>
+          <td id="15" data-row="1" data-column="5"></td>
+          <td id="16" data-row="1" data-column="6"></td>
         </tr>
         <tr>
           <th>C</th>
-          <td id="20"></td>
-          <td id="21"></td>
-          <td id="22"></td>
-          <td id="23"></td>
-          <td id="24"></td>
-          <td id="25"></td>
-          <td id="26"></td>
+          <td id="20" data-row="2" data-column="0"></td>
+          <td id="21" data-row="2" data-column="1"></td>
+          <td id="22" data-row="2" data-column="2"></td>
+          <td id="23" data-row="2" data-column="3"></td>
+          <td id="24" data-row="2" data-column="4"></td>
+          <td id="25" data-row="2" data-column="5"></td>
+          <td id="26" data-row="2" data-column="6"></td>
         </tr>
         <tr>
           <th>D</th>
-          <td id="30"></td>
-          <td id="31"></td>
-          <td id="32"></td>
-          <td id="33"></td>
-          <td id="34"></td>
-          <td id="35"></td>
-          <td id="36"></td>
+          <td id="30" data-row="3" data-column="0"></td>
+          <td id="31" data-row="3" data-column="1"></td>
+          <td id="32" data-row="3" data-column="2"></td>
+          <td id="33" data-row="3" data-column="3"></td>
+          <td id="34" data-row="3" data-column="4"></td>
+          <td id="35" data-row="3" data-column="5"></td>
+          <td id="36" data-row="3" data-column="6"></td>
         </tr>
         <tr>
           <th>E</th>
-          <td id="40"></td>
-          <td id="41"></td>
-          <td id="42"></td>
-          <td id="43"></td>
-          <td id="44"></td>
-          <td id="45"></td>
-          <td id="46"></td>
+          <td id="40" data-row="4" data-column="0"></td>
+          <td id="41" data-row="4" data-column="1"></td>
+          <td id="42" data-row="4" data-column="2"></td>
+          <td id="43" data-row="4" data-column="3"></td>
+          <td id="44" data-row="4" data-column="4"></td>
+          <td id="45" data-row="4" data-column="5"></td>
+          <td id="46" data-row="4" data-column="6"></td>
         </tr>
         <tr>
           <th>F</th>
-          <td id="50"></td>
-          <td id="51"></td>
-          <td id="52"></td>
-          <td id="53"></td>
-          <td id="54"></td>
-          <td id="55"></td>
-          <td id="56"></td>
+          <td id="50" data-row="5" data-column="0"></td>
+          <td id="51" data-row="5" data-column="1"></td>
+          <td id="52" data-row="5" data-column="2"></td>
+          <td id="53" data-row="5" data-column="3"></td>
+          <td id="54" data-row="5" data-column="4"></td>
+          <td id="55" data-row="5" data-column="5"></td>
+          <td id="56" data-row="5" data-column="6"></td>
         </tr>
         <tr>
           <th>G</th>
-          <td id="60"></td>
-          <td id="61"></td>
-          <td id="62"></td>
-          <td id="63"></td>
-          <td id="64"></td>
-          <td id="65"></td>
-          <td id="66"></td>
+          <td id="60" data-row="6" data-column="0"></td>
+          <td id="61" data-row="6" data-column="1"></td>
+          <td id="62" data-row="6" data-column="2"></td>
+          <td id="63" data-row="6" data-column="3"></td>
+          <td id="64" data-row="6" data-column="4"></td>
+          <td id="65" data-row="6" data-column="5"></td>
+          <td id="66" data-row="6" data-column="6"></td>
         </tr>
         <tr>
           <th></th>
@@ -100,11 +100,10 @@
       </table>
 
       <!-- form to submit guesses near bottom -->
-      <form>
+      <!-- <form>
         <input type="text" id="guessInput" placeholder="A0" />
         <input type="button" id="fireButton" value="Fire!" />
-      </form>
+      </form> -->
     </div>
   </body>
 </html>
-

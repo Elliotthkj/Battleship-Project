@@ -95,7 +95,8 @@ let gameData = {
     return newShipLocations; // hands the array to whatever calls it (aka generateShipLocations)
   },
 
-  collision: function (locations) { // returns true 
+  collision: function (locations) {
+    // returns true
     for (let i = 0; i < this.numShips; i++) {
       let ship = this.ships[i];
       for (let j = 0; j < locations.length; j++) {
@@ -135,13 +136,13 @@ let winCondition = {
 
   // processes the guess entered in the form
   processGuess: function (guess) {
-    let location = parseGuess(guess);
+    // let location = parseGuess(guess); DISCONTINUED
     let accuracy = Math.round(
       ((gameData.numShips * gameData.shipLength) / this.guesses) * 100 - 1
     );
-    if (location) {
+    if (guess) {
       this.guesses++;
-      let hit = gameData.fire(location); // runs guess through 'fire: function (guess)'
+      let hit = gameData.fire(guess); // runs guess through 'fire: function (guess)'
       if (hit && gameData.shipsSunk === gameData.numShips) {
         // displays winning message if all ships are sunk
         resultsDisplay.displayMessage(
@@ -156,7 +157,7 @@ let winCondition = {
   },
 };
 
-// function to parse a guess from the user and check if its a valid guess
+// function to parse a guess from the user and check if the typed entry is a valid guess DISCONTINUED
 function parseGuess(guess) {
   let alphabet = ["A", "B", "C", "D", "E", "F", "G"]; // the only letters we will accept in the guess
 
@@ -208,15 +209,27 @@ function handleKeyPress(e) {
   }
 }
 
+// handle cell click
+function handleCellClick(e) {
+  let location = e.target.id;
+  winCondition.processGuess(location);
+}
+
 // initialize the game/assign event handlers and generate ship locations
 window.onload = function () {
   // Fire! button onclick handler
-  const fireButton = document.getElementById("fireButton");
-  fireButton.onclick = handleFireButton;
+  // const fireButton = document.getElementById("fireButton");
+  // fireButton.onclick = handleFireButton; DISCONTINUED
 
   // handle "return" key press from guess input field
-  const guessInput = document.getElementById("guessInput");
-  guessInput.onkeydown = handleKeyPress;
+  // const guessInput = document.getElementById("guessInput");
+  // guessInput.onkeydown = handleKeyPress; DISCONTINUED
+
+  // adds click event listen to each cell
+  let cells = document.querySelectorAll("td");
+  for (let i = 0; i < cells.length; i++) {
+    cells[i].addEventListener("click", handleCellClick);
+  }
 
   // place the ships on the game board
   gameData.generateShipLocations();
