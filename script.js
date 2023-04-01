@@ -34,7 +34,7 @@ let gameData = {
         resultsDisplay.displayMessage("HIT!");
 
         if (this.isSunk(ship)) {
-          resultsDisplay.displayMessage("You sank my battleship silly goose!");
+          resultsDisplay.displayMessage("You sank my battleship silly goose! " + (this.numShips - this.shipsSunk - 1) + " more to go.");
           this.shipsSunk++; // updates win condition, 3 to win
         }
         return true;
