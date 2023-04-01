@@ -55,14 +55,14 @@ let gameData = {
     return true; // true if all indexes are marked "hit"
   },
 
-  // TODO: generate ship locations
+  // generate ship locations
   generateShipLocations: function () {
     let locations; // empty array to hold current iterated ship location
     for (let i = 0; i < this.numShips; i++) {
       // generate ships = numShips
       do {
         locations = this.generateShip(); // stores an array with 3 values to represent a ship and its coordinates
-      } while (this.collision(locations)); // TODO: function to check if it is overlapping with a previously created ship
+      } while (this.collision(locations)); // checks if ship is overlapping with a previously created ship... if true (there IS a collision) run generateShip again
       this.ships[i].locations = locations; // once ship array is created and is verified to not be overlapping with another ship we save the location in gameData.ships and do it again until it creates ships = numShips
     }
     console.log("Ships array: ");
@@ -93,6 +93,18 @@ let gameData = {
       }
     }
     return newShipLocations; // hands the array to whatever calls it (aka generateShipLocations)
+  },
+
+  collision: function (locations) { // returns true 
+    for (let i = 0; i < this.numShips; i++) {
+      let ship = this.ships[i];
+      for (let j = 0; j < locations.length; j++) {
+        if (ship.locations.indexOf(locations[j]) >= 0) {
+          return true;
+        }
+      }
+    }
+    return false;
   },
 };
 
@@ -196,7 +208,7 @@ function handleKeyPress(e) {
   }
 }
 
-// TODO: initialize the game/assign event handlers and generate ship locations
+// initialize the game/assign event handlers and generate ship locations
 window.onload = function () {
   // Fire! button onclick handler
   const fireButton = document.getElementById("fireButton");
@@ -206,5 +218,6 @@ window.onload = function () {
   const guessInput = document.getElementById("guessInput");
   guessInput.onkeydown = handleKeyPress;
 
-  // TODO: generate ship locations
+  // place the ships on the game board
+  gameData.generateShipLocations();
 };
