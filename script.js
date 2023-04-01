@@ -188,8 +188,23 @@ function parseGuess(guess) {
   return null; // guess is invalid and returns null
 }
 
+// resets the game
+function resetGame() {
+  const tds = document.querySelectorAll("td");
+  tds.forEach((td) => td.classList.remove(...td.classList));
+  winCondition.guesses = 0;
+  gameData.shipsSunk = 0;
+  gameData.ships = [
+    { locations: [0, 0, 0], hits: ["", "", ""] },
+    { locations: [0, 0, 0], hits: ["", "", ""] },
+    { locations: [0, 0, 0], hits: ["", "", ""] },
+  ];
+  messageArea.innerHTML = 'Lets go again. Hit all the ships to win!';
+  gameData.generateShipLocations();
+}
+
 // event handlers
-// handle fire button
+// handle fire button DISCONTINUED
 function handleFireButton() {
   let guessInput = document.getElementById("guessInput"); // access DOM to retrieve guess input
   let guess = guessInput.value.toUpperCase(); // converts letter to uppercase and stores the guess
@@ -199,7 +214,7 @@ function handleFireButton() {
   guessInput.value = ""; // removes old guess from form for convenience
 }
 
-// handle key press
+// handle key press DISCONTINUED
 function handleKeyPress(e) {
   let fireButton = document.getElementById("fireButton");
 
