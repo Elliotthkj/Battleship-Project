@@ -135,12 +135,12 @@ let resultsDisplay = {
 let winCondition = {
   guesses: 0,
 
-  // processes the guess entered in the form
+  // processes the guess entered in the form (or clicked)
   processGuess: function (guess) {
     // let location = parseFormGuess(guess); DISCONTINUED
     let td = document.getElementById(guess);
     let accuracy = Math.round(
-      ((gameData.numShips * gameData.shipLength) / this.guesses) * 100 - 1
+      ((gameData.numShips * gameData.shipLength) / (this.guesses + 1)) * 100
     );
     if (
       guess &&
