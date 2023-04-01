@@ -159,6 +159,10 @@ let winCondition = {
             "% accuracy! Good job silly goose :)"
         );
       }
+    } else {
+      resultsDisplay.displayMessage(
+        "Oops, you already guessed that location silly goose!"
+      );
     }
   },
 };
@@ -232,8 +236,10 @@ function handleKeyPress(e) {
 
 // handle cell click
 function handleCellClick(e) {
-  let location = e.target.id;
-  winCondition.processGuess(location);
+  if (gameData.numShips !== gameData.shipsSunk) {
+    let location = e.target.id;
+    winCondition.processGuess(location);
+  }
 }
 
 // initialize the game/assign event handlers and generate ship locations
