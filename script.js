@@ -58,14 +58,41 @@ let gameData = {
   // TODO: generate ship locations
   generateShipLocations: function () {
     let locations; // empty array to hold current iterated ship location
-    for (let i = 0; i < this.numShips; i++) { // generate ships = numShips
+    for (let i = 0; i < this.numShips; i++) {
+      // generate ships = numShips
       do {
-        locations = this.generateShip(); // TODO: function to create an array of the current iterated ship
+        locations = this.generateShip(); // stores an array with 3 values to represent a ship and its coordinates
       } while (this.collision(locations)); // TODO: function to check if it is overlapping with a previously created ship
-      this.ships[i].locations = locations; // once array is created and is verified to not be overlapping with another ship we save the location in gameData.ships and do it again until it creates ships = numShips
+      this.ships[i].locations = locations; // once ship array is created and is verified to not be overlapping with another ship we save the location in gameData.ships and do it again until it creates ships = numShips
     }
     console.log("Ships array: ");
     console.log(this.ships);
+  },
+
+  // function to create an array of the current iterated ship
+  generateShip: function () {
+    let direction = Math.floor(Math.random() * 2); // coin flip direction
+    let row, col;
+
+    if (direction === 1) {
+      // horizontal
+      row = Math.floor(Math.random() * this.boardSize); // gives random value 0-6
+      col = Math.floor(Math.random() * (this.boardSize - this.shipLength + 1)); // leaves room on right side of the board for remaining 2 spaces of ship
+    } else {
+      // vertical
+      row = Math.floor(Math.random() * (this.boardSize - this.shipLength + 1)); // leaves room on bottom side of the board for remaining 2 spaces of ship
+      col = Math.floor(Math.random() * this.boardSize); // gives random value 0-6
+    }
+
+    let newShipLocations = [];
+    for (let i = 0; i < this.shipLength; i++) {
+      if (direction === 1) {
+        newShipLocations.push(row + "" + (col + i)); // adds 3 coords to newShipLocations array for a horizontal ship e.g. ['01', '02', '03']
+      } else {
+        newShipLocations.push(row + i + "" + col); // adds 3 coords to newShipLocations array for a vertical ship e.g. ['11', '21', '31']
+      }
+    }
+    return newShipLocations; // hands the array to whatever calls it (aka generateShipLocations)
   },
 };
 
@@ -98,7 +125,7 @@ let winCondition = {
   processGuess: function (guess) {
     let location = parseGuess(guess);
     let accuracy = Math.round(
-      ((gameData.numShips * 3) / this.guesses) * 100 - 1
+      ((gameData.numShips * gameData.shipLength) / this.guesses) * 100 - 1
     );
     if (location) {
       this.guesses++;
