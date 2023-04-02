@@ -183,10 +183,16 @@ let winCondition = {
         winSound.volume = 0.2;
         winSound.play();
 
-        // Display victory GIF
+        // Display victory GIF for 5 seconds
         let gifContainer = document.querySelector("#gif-container");
         gifContainer.innerHTML =
-          '<img src="./gif/jack-sparrow.gif" alt="Victory GIF"> loop="1"';
+          '<img src="./gif/jack-sparrow.gif" alt="Victory GIF">';
+
+        setTimeout(() => {
+          // Remove the GIF after 5 seconds
+          let gif = gifContainer.querySelector("img");
+          gif.parentNode.removeChild(gif);
+        }, 5000); 
 
         // Update div with class of 'average' with the new average accuracy
         let averageDiv = document.querySelector(".average");
