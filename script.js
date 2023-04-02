@@ -42,6 +42,12 @@ let gameData = {
               " more to go."
           );
           this.shipsSunk++; // updates win condition, 3 to win
+
+          // Play sink sound
+          if (gameData.shipsSunk !== gameData.numShips) {
+            let sinkSound = new Audio("./audio/shipsunk.wav");
+            sinkSound.play();
+          }
         }
         return true;
       }
@@ -171,6 +177,11 @@ let winCondition = {
             accuracy +
             "% accuracy! Good job silly goose :)"
         );
+
+        // Play victory jingle
+        let winSound = new Audio("./audio/victoryjingle.wav");
+        winSound.volume = 0.2;
+        winSound.play();
 
         // Update div with class of 'average' with the new average accuracy
         let averageDiv = document.querySelector(".average");

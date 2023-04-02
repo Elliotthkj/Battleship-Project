@@ -72,7 +72,17 @@ button {
   background-color: rgb(83, 175, 19);
   font-size: larger;
   font-weight: bolder;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgb(255, 153, 0);
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s;
 }
+
+button:hover {
+  transform: scale(1.1);
+}
+
 
 .scoreboard {
   color: white;
