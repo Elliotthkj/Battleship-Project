@@ -70,4 +70,25 @@ button {
   right: 40.5%;
   padding: 15px;
   background-color: rgb(83, 175, 19);
+  font-size: larger;
+  font-weight: bolder;
 }
+
+.scoreboard {
+  color: white;
+  margin-left: 5%;
+  font-size: 1.5rem;
+}
+
+h2 {
+  color: white;
+  margin-left: 4%;
+  font-size: 3rem;
+}
+
+.average {
+  color: rgb(0, 255, 30);
+  margin-left: 4%;
+  font-size: 2rem;
+}
+

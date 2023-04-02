@@ -4,6 +4,8 @@ let gameData = {
   numShips: 3,
   shipLength: 3,
   shipsSunk: 0,
+  numWins: 0,
+  totalAccuracy: 0,
 
   // array thats storing the ship locations and if the player has hit those ship locations
   ships: [
@@ -34,7 +36,11 @@ let gameData = {
         resultsDisplay.displayMessage("HIT!");
 
         if (this.isSunk(ship)) {
-          resultsDisplay.displayMessage("You sank my battleship silly goose! " + (this.numShips - this.shipsSunk - 1) + " more to go.");
+          resultsDisplay.displayMessage(
+            "You sank my battleship! " +
+              (this.numShips - this.shipsSunk - 1) +
+              " more to go."
+          );
           this.shipsSunk++; // updates win condition, 3 to win
         }
         return true;
@@ -150,6 +156,13 @@ let winCondition = {
       this.guesses++;
       let hit = gameData.fire(guess); // runs guess through 'fire: function (guess)'
       if (hit && gameData.shipsSunk === gameData.numShips) {
+        // Update running average of user's accuracy
+        gameData.totalAccuracy += accuracy;
+        gameData.numWins++;
+        let averageAccuracy = Math.round(
+          gameData.totalAccuracy / gameData.numWins
+        );
+
         // displays winning message if all ships are sunk
         resultsDisplay.displayMessage(
           "You sank all my battleships, in " +
@@ -158,6 +171,19 @@ let winCondition = {
             accuracy +
             "% accuracy! Good job silly goose :)"
         );
+
+        // Update div with class of 'average' with the new average accuracy
+        let averageDiv = document.querySelector(".average");
+        averageDiv.innerHTML = "Average accuracy: " + averageAccuracy + "%";
+
+        // push a new list item in an unordered list with the class of 'scoreboard'
+        let scoreboard = document.querySelector(".scoreboard");
+        let newListItem = document.createElement("li");
+        let scoreText = document.createTextNode(
+          this.guesses + " guesses, " + accuracy + "% accuracy"
+        );
+        newListItem.appendChild(scoreText);
+        scoreboard.appendChild(newListItem);
       }
     } else {
       resultsDisplay.displayMessage(
