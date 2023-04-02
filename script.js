@@ -183,6 +183,11 @@ let winCondition = {
         winSound.volume = 0.2;
         winSound.play();
 
+        // Display victory GIF
+        let gifContainer = document.querySelector("#gif-container");
+        gifContainer.innerHTML =
+          '<img src="./gif/jack-sparrow.gif" alt="Victory GIF"> loop="1"';
+
         // Update div with class of 'average' with the new average accuracy
         let averageDiv = document.querySelector(".average");
         averageDiv.innerHTML = "Average accuracy: " + averageAccuracy + "%";
@@ -248,6 +253,9 @@ function resetGame() {
   ];
   messageArea.innerHTML = "Lets go again. Hit all the ships to win!";
   gameData.generateShipLocations();
+  const gifContainer = document.getElementById("gif-container");
+  gifContainer.innerHTML = "";
+
 }
 
 // event handlers

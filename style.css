@@ -110,3 +110,20 @@ h2 {
   font-size: 2rem;
 }
 
+/* TESTING THINGS */
+div#board-container {
+  position: relative;
+}
+
+div#gif-container {
+  position: absolute;
+  top: 50%;
+  right: 200px;
+  transform: translateY(-50%);
+}
+
+div#gif-container img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
