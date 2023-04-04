@@ -161,9 +161,9 @@ div#gif-container img {
   }
 
   table {
-    width: 80%;
+    width: 110%;
     margin: 0 auto;
-    left: 40%;
+    left: 35%;
     transform: translateX(-50%);
   }
 
@@ -203,6 +203,6 @@ div#gif-container img {
     position: sticky;
     left: 0;
     margin-top: 29rem;
-    margin-left: 42%;
+    margin-left: 38%;
   }
 }
