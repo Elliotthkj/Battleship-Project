@@ -183,13 +183,13 @@ let winCondition = {
         winSound.volume = 0.2;
         winSound.play();
 
-        // Display victory GIF for 5 seconds
+        // Display victory GIF
         let gifContainer = document.querySelector("#gif-container");
         gifContainer.innerHTML =
           '<img src="./gif/jack-sparrow.gif" alt="Victory GIF">';
 
         setTimeout(() => {
-          // Remove the GIF after 5 seconds
+          // Remove victory GIF after 5 seconds
           let gif = gifContainer.querySelector("img");
           gif.parentNode.removeChild(gif);
         }, 5000); 
@@ -198,7 +198,7 @@ let winCondition = {
         let averageDiv = document.querySelector(".average");
         averageDiv.innerHTML = "Average accuracy: " + averageAccuracy + "%";
 
-        // push a new list item in an unordered list with the class of 'scoreboard'
+        // push a new list item in an ordered list with the class of 'scoreboard'
         let scoreboard = document.querySelector(".scoreboard");
         let newListItem = document.createElement("li");
         let scoreText = document.createTextNode(

@@ -19,7 +19,7 @@
           Hello gamer! Welcome to Battleship. Hit all the ships to win!
         </div>
 
-        <table>
+        <table class="notranslate">
           <tr>
             <th>A</th>
             <td id="00" data-row="0" data-column="0"></td>
@@ -109,12 +109,13 @@
       </form> -->
         <button onclick="resetGame()">Reset Game</button>
       </div>
-      <div id="gif-container">
-      </div>
+      <div id="gif-container"></div>
     </div>
-    <h2>Round:</h2>
-    <ol class="scoreboard"></ol>
-    <div class="average">Current average:</div>
+    <div class="stats-container">
+      <h2>Round:</h2>
+      <ol class="scoreboard"></ol>
+      <div class="average">Current average:</div>
+    </div>
     <audio id="win-sound" src="./audio/victoryjingle.wav"></audio>
     <audio id="sink-sound" src="./audio/shipsunk.wav"></audio>
   </body>
