@@ -162,7 +162,7 @@ div#gif-container img {
 
   table {
     width: 110%;
-    margin: 0 auto;
+    margin: 2rem auto;
     left: 35%;
     transform: translateX(-50%);
   }
@@ -205,4 +205,5 @@ div#gif-container img {
     margin-top: 29rem;
     margin-left: 38%;
   }
+
 }
